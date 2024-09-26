@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Model List{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold mb-6 text-center text-white">Model List</h2>
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        {% if models %}
+        <ul class="space-y-4">
+            {% for model in models %}
+            <li class="bg-gray-700 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold text-white">{{ model.model_name }}</h3>
+                <p class="text-gray-300">Uploaded on: {{ model.uploaded_at }}</p>
+                <div class="mt-4">
+                    <a href="{% url 'predict' model.id %}"
+                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">Predict</a>
+                    <a href="{% url 'delete_model' model.id %}"
+                        class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition duration-300 ml-2">Delete</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-gray-300">No models available. <a href="{% url 'upload_model' %}"
+                class="text-purple-500 hover:underline">Upload a model</a>.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

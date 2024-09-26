@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Bad Request{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold mb-6 text-center text-white">400 - Bad Request</h2>
+    <p class="text-gray-300 text-center">Sorry, your request could not be processed. Please check your input and try
+        again.</p>
+    <div class="text-center mt-6">
+        <a href="{% url 'index' %}"
+            class="bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-300">Go to
+            Home</a>
+    </div>
+</div>
+{% endblock %}

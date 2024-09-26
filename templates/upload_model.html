@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Model{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold mb-6 text-center text-white">Upload Model</h2>
+    <form method="post" enctype="multipart/form-data" class="space-y-6 ">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div id="input-names-container" class="space-y-4">
+            <div class="input-name">
+                <label for="input_name_0" class="block text-sm font-medium text-gray-300">Input Name</label>
+                <input type="text" name="input_names" id="input_name_0"
+                    class="mt-1 block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+            </div>
+        </div>
+        <button type="button" id="add-input-button"
+            class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">Add
+            Input</button>
+        <button type="submit"
+            class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-300">Upload</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('add-input-button').addEventListener('click', function () {
+        var container = document.getElementById('input-names-container');
+        var index = container.children.length;
+        var newInput = document.createElement('div');
+        newInput.classList.add('input-name');
+        newInput.innerHTML = `
+            <label for="input_name_${index}" class="block text-sm font-medium text-gray-300">Input Name</label>
+            <input type="text" name="input_names" id="input_name_${index}"
+                class="mt-1 block w-full px-3 py-2 bg-gray-700 text-gray-300 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+        `;
+        container.appendChild(newInput);
+    });
+</script>
+<style>
+    input{
+        color: rgb(73, 7, 73);
+    }
+</style>
+{% endblock %}

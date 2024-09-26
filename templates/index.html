@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-6 text-center text-white">Welcome to the ML Model Management App</h1>
+    <p class="text-lg text-gray-300 mb-6 text-center">
+        This application allows you to upload machine learning models, specify input fields, and make predictions.
+        Development is only in the initial stage so it only allows sklearn 1.5.2 models, stick to this version, using models serialized from other sklearn versions may not work.
+    </p>
+    <div class="flex justify-center space-x-4">
+        <a href="{% url 'upload_model' %}"
+            class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+            Upload Model
+        </a>
+        <a href="{% url 'model_list' %}"
+            class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300">
+            View Models
+        </a>
+    </div>
+</div>
+{% endblock %}
